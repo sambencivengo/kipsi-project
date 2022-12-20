@@ -1,6 +1,7 @@
 import {
 	Box,
 	Button,
+	ButtonGroup,
 	Drawer,
 	DrawerBody,
 	DrawerCloseButton,
@@ -9,6 +10,7 @@ import {
 	DrawerOverlay,
 	VStack,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { colors } from '../theme';
 
@@ -22,19 +24,39 @@ export const Sidebar = ({
 	showSideBar,
 	toggleSideBar,
 }: SideBarProps) => {
+	const router = useRouter();
 	const sideBarColor = colors.navy;
 	const NavigationContent = () => (
-		<VStack gap={4}>
-			<Button width="100%">Projects</Button>
-			<Button width="100%">Expenses</Button>
-			<Button width="100%">Extra</Button>
+		<VStack>
+			<Button
+				onClick={() => router.push('/projects')}
+				size={'lg'}
+				borderRadius={0}
+				h={'50px'}
+				width="100%"
+			>
+				Projects
+			</Button>
+
+			<Button
+				onClick={() => router.push('/expenses')}
+				size={'lg'}
+				borderRadius={0}
+				h={'50px'}
+				width="100%"
+			>
+				Expenses
+			</Button>
 		</VStack>
 	);
 
 	return isMobile ? (
-		// TODO: Drawer with button activator
-
-		<Drawer isOpen={showSideBar} placement="left" onClose={toggleSideBar}>
+		<Drawer
+			size={'xs'}
+			isOpen={showSideBar}
+			placement="left"
+			onClose={toggleSideBar}
+		>
 			<DrawerOverlay>
 				<DrawerContent bgColor={sideBarColor}>
 					<DrawerCloseButton />
@@ -49,12 +71,10 @@ export const Sidebar = ({
 		<Box
 			position="fixed"
 			left={0}
-			p={5}
 			w="300px"
-			top={0}
+			top={'80px'}
 			h="100%"
 			bgColor={sideBarColor}
-			pt={10}
 		>
 			<NavigationContent />
 		</Box>

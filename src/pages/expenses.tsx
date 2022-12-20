@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 const Expenses: NextPage = () => {
 	return (
 		<Center>
-			<Heading>Expenses </Heading>
+			<Heading>Expenses 🧾</Heading>
 		</Center>
 	);
 };

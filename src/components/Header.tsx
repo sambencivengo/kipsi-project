@@ -1,4 +1,4 @@
-import { Box, Center, Text, Flex, IconButton, Heading } from '@chakra-ui/react';
+import { Box, Center, Flex, IconButton, Heading } from '@chakra-ui/react';
 import { MdMenu } from 'react-icons/md';
 import { colors } from '../theme';
 interface HeaderProps {
@@ -8,8 +8,8 @@ interface HeaderProps {
 
 export const Header = ({ isMobile, toggleSideBar }: HeaderProps) => {
 	return (
-		<Flex bgColor={colors.navy} p={5}>
-			<Box flex="1">
+		<Flex bgColor={colors.navy} justifyContent="space-between" h="80px">
+			<Box p={5}>
 				{isMobile && (
 					<IconButton
 						icon={<MdMenu />}
@@ -19,9 +19,9 @@ export const Header = ({ isMobile, toggleSideBar }: HeaderProps) => {
 				)}
 			</Box>
 			<Center>
-				<Heading>Kipsi Projects</Heading>
+				<Heading>Kipsi Project</Heading>
 			</Center>
-			<Box flex="1" />
+			<Box />
 		</Flex>
 	);
 };
