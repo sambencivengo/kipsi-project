@@ -25,7 +25,7 @@ export const Sidebar = ({
 	toggleSideBar,
 }: SideBarProps) => {
 	const router = useRouter();
-	const sideBarColor = colors.navy;
+	const sideBarColor = colors.darkBlue;
 	const NavigationContent = () => (
 		<VStack>
 			<Button

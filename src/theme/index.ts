@@ -8,11 +8,12 @@ const config: ThemeConfig = {
 };
 
 export const colors = {
-	deepNavy: '#0D1B2A',
-	navy: '#1B263B',
-	greyBlue: '#415A77',
-	lightGreyBlue: '#778DA9',
-	paperGrey: '#E0E1DD',
+	lightBlue: '#8ECAE6',
+	blue: '#219EBC',
+	darkBlue: '#023047',
+	yellow: '#FFB703',
+	orange: '#FB8500',
+	white: '#FFFFFF',
 	red: '#bf0a30',
 	warning: '#ffd700',
 };
@@ -21,26 +22,14 @@ export const theme = extendTheme({
 	config,
 	components: {
 		// Button: {
-		// 	variants: {
-		// 		cta: (props: GlobalStyleProps) => ({
-		// 			...theme.components.Button.variants.outline(props),
-		// 			bg: colors.green,
-		// 			color: colors.white,
-		// 			_hover: {
-		// 				bg: colors.green,
-		// 			},
-		// 		}),
-		// 		outline: (props: GlobalStyleProps) => ({
-		// 			borderWidth: 2,
-		// 		}),
-		// 	},
+		// 	baseStyle: {{colors.yellow},
 		// },
 	},
 	styles: {
 		global: (props) => ({
 			body: {
-				color: mode(colors.deepNavy, colors.paperGrey)(props),
-				backgroundColor: mode(colors.paperGrey, colors.navy)(props),
+				color: mode(colors.blue, colors.darkBlue)(props),
+				backgroundColor: mode(colors.blue, colors.darkBlue)(props),
 			},
 			'::-webkit-scrollbar': { display: 'none' },
 			'#hubspot-messages-iframe-container': {

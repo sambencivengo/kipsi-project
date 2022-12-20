@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export const Header = ({ isMobile, toggleSideBar }: HeaderProps) => {
 	return (
-		<Flex bgColor={colors.navy} justifyContent="space-between" h="80px">
+		<Flex bgColor={colors.darkBlue} justifyContent="space-between" h="80px">
 			<Box p={5}>
 				{isMobile && (
 					<IconButton
