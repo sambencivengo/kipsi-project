@@ -24,15 +24,7 @@ export default function Layout({ children }: LayoutProps) {
 				toggleSideBar={toggleSideBar}
 			/>
 			<Center>
-				<main
-					style={
-						{
-							// marginLeft: '300px',
-						}
-					}
-				>
-					{children}
-				</main>
+				<main>{children}</main>
 			</Center>
 		</>
 	);

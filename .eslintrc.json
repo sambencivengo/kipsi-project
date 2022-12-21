@@ -1,5 +1,18 @@
 {
 	"parser": "@typescript-eslint/parser",
-	"extends": "next/core-web-vitals",
-	"unused-imports/no-unused-imports": "error"
+	"plugins": ["@typescript-eslint", "unused-imports"],
+	"extends": ["next/core-web-vitals", "../../.eslintrc"],
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		"unused-imports/no-unused-imports": "error",
+		"import/order": ["error"],
+		"prefer-template": ["error"],
+		"no-plusplus": ["error"],
+		"no-nested-ternary": ["error"],
+		"no-unused-expressions": ["error"],
+		"@typescript-eslint/no-floating-promises": ["error"]
+	}
 }
