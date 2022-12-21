@@ -1,8 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,16 +9,6 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-// Directions
-// R&D project management including project creation, project update
-
-// It should be able to search projects based on metadata associated with projects
-
-// Each project has a R&D cost total made up of many expenses each with their own timestamp 
-
-// Each expense has amount, is_qualified flag
-
 
 model Project {
   id        Int      @id @default(autoincrement())

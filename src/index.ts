@@ -1,10 +1,12 @@
 import express from 'express';
-import { env } from './env';
+import { api } from './api';
 
 const PORT = process.env.PORT || 8000;
 
 const start = async () => {
 	const app = express();
+
+	app.use('/api', api);
 
 	app.get('/', (_, res) => {
 		res.send('Hello world');
