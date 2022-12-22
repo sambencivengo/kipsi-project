@@ -1,11 +1,14 @@
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, useBreakpointValue, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { devBaseApiUrl } from '../../constants';
+import { Project } from '../../types';
+import { ProjectCard } from './ProjectCard';
 
 interface ProjectsContainerProps {}
 
 export const ProjectsContainer: React.FC<ProjectsContainerProps> = ({}) => {
-	const [projects, setProjects] = React.useState();
+	const [projects, setProjects] = React.useState<Project[] | null>(null);
+	const isMobile = useBreakpointValue({ base: true, lg: false });
 
 	React.useEffect(() => {
 		const getProjects = async () => {
@@ -17,12 +20,16 @@ export const ProjectsContainer: React.FC<ProjectsContainerProps> = ({}) => {
 		getProjects();
 	}, []);
 
-	console.log(projects);
-
 	return (
 		<Box>
-			<Text>Projects Container</Text>
-			<Button float={'right'}>New Project</Button>
+			<Box maxWidth={isMobile ? undefined : '900px'}>
+				<VStack align="stretch" spacing={5}>
+					{projects &&
+						projects.map((project) => (
+							<ProjectCard key={project.id} project={project} />
+						))}
+				</VStack>
+			</Box>
 		</Box>
 	);
 };
