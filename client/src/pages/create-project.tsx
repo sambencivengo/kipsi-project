@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik';
 import { NextPage } from 'next';
 import { InputField } from '../components/InputField';
 import { colors } from '../theme';
+import { CreateProjectSchema } from '../schema';
 
 const CreateProject: NextPage = () => {
 	return (
@@ -13,9 +14,8 @@ const CreateProject: NextPage = () => {
 					validateOnChange={false}
 					validateOnBlur={false}
 					initialValues={{ name: '', description: '' }}
-					// validationSchema={LoginLawyer.uiSchema} TODO: schema
+					validationSchema={CreateProjectSchema.uiSchema}
 					onSubmit={async (args) => {
-						console.log(args);
 						console.log(args);
 					}}
 				>
