@@ -4,6 +4,9 @@ import { prisma } from '../../prismaClient';
 export const get: Handler = async (_, res) => {
 	try {
 		const projects = await prisma.project.findMany({
+			orderBy: {
+				createdAt: 'desc',
+			},
 			include: {
 				expenses: true,
 			},
