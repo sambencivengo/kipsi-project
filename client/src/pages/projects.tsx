@@ -1,11 +1,12 @@
-import { Center, Heading } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import { NextPage } from 'next';
+import { ProjectsContainer } from '../components/ProjectsContainer';
 
 const Projects: NextPage = () => {
 	return (
-		<Center>
-			<Heading>Projects 🗂</Heading>
-		</Center>
+		<VStack>
+			<ProjectsContainer />
+		</VStack>
 	);
 };
 
