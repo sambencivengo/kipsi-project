@@ -73,22 +73,20 @@ const Projects: NextPage = () => {
 	};
 
 	return (
-		<Box>
-			<Box maxWidth={isMobile ? undefined : '900px'}>
-				<VStack align="stretch" spacing={5}>
-					<HStack>
-						<Input
-							onChange={searchProjects}
-							bgColor={colors.blue}
-							placeholder={'Search projects...'}
-						/>
-					</HStack>
-					{projects &&
-						filteredProjects?.map((project) => (
-							<ProjectCard key={project.id} project={project} />
-						))}
-				</VStack>
-			</Box>
+		<Box maxWidth={isMobile ? undefined : '900px'}>
+			<VStack align="stretch" spacing={5}>
+				<HStack>
+					<Input
+						onChange={searchProjects}
+						bgColor={colors.blue}
+						placeholder={'Search projects...'}
+					/>
+				</HStack>
+				{projects &&
+					filteredProjects?.map((project) => (
+						<ProjectCard key={project.id} project={project} />
+					))}
+			</VStack>
 		</Box>
 	);
 };
