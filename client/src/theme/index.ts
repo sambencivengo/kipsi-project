@@ -18,7 +18,7 @@ export const colors = {
 };
 
 export const theme = extendTheme({
-	config,
+	...config,
 	components: {
 		// Button: {
 		// 	baseStyle: {{colors.yellow},
@@ -27,7 +27,7 @@ export const theme = extendTheme({
 	styles: {
 		global: {
 			body: {
-				bg: colors.lightBlue,
+				bgColor: colors.red,
 			},
 			'::-webkit-scrollbar': { display: 'none' },
 		},

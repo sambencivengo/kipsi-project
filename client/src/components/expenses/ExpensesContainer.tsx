@@ -1,4 +1,4 @@
-import { Box, Center } from '@chakra-ui/react';
+import { Box, Center, Heading, useBreakpointValue } from '@chakra-ui/react';
 import React from 'react';
 import { devBaseApiUrl } from '../../constants';
 import { Expense } from '../../types';
@@ -7,6 +7,7 @@ interface ExpensesContainerProps {}
 
 export const ExpensesContainer: React.FC<ExpensesContainerProps> = ({}) => {
 	const [expenses, setExpenses] = React.useState<Expense[] | null>(null);
+	const isMobile = useBreakpointValue({ base: true, lg: false });
 
 	React.useEffect(() => {
 		const getExpenses = async () => {
@@ -19,8 +20,16 @@ export const ExpensesContainer: React.FC<ExpensesContainerProps> = ({}) => {
 	}, []);
 
 	return (
-		<Box border="1px solid red" minH="500px" minW="300px">
+		<Box>
 			<Center>Expenses Container</Center>
+			{expenses &&
+				expenses.map((expense) => (
+					<Box w={isMobile ? undefined : '800px'}>
+						<Heading size="lg" alignSelf={'left'}>
+							{expense.name}
+						</Heading>
+					</Box>
+				))}
 		</Box>
 	);
 };
