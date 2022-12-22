@@ -20,17 +20,25 @@ export const colors = {
 export const theme = extendTheme({
 	...config,
 	components: {
-		// Button: {
-		// 	baseStyle: {{colors.yellow},
-		// },
+		Button: {
+			variants: {
+				solid: () => ({
+					bg: colors.orange,
+					color: colors.white,
+					_hover: {
+						bg: colors.yellow,
+					},
+				}),
+			},
+		},
 	},
 	styles: {
 		global: {
 			body: {
-				bgColor: colors.red,
+				bgColor: colors.blue,
 			},
 			'::-webkit-scrollbar': { display: 'none' },
 		},
 	},
 	colors,
-} as DeepPartial<Theme>);
+} as unknown as DeepPartial<Theme>);
