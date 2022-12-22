@@ -1,13 +1,25 @@
-import { Box, Spinner, useBreakpointValue, VStack } from '@chakra-ui/react';
+import {
+	Box,
+	Button,
+	HStack,
+	Input,
+	Spinner,
+	useBreakpointValue,
+	VStack,
+} from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
 import { ProjectCard } from '../components/projects/ProjectCard';
 import { devBaseApiUrl } from '../constants';
 import { ErrorAlert, ErrorAlertProps } from '../components/ErrorAlert';
 import { Project } from '../types';
+import { colors } from '../theme';
 
 const Projects: NextPage = () => {
-	const [projects, setProjects] = React.useState<Project[] | null>(null);
+	const [projects, setProjects] = React.useState<Project[]>([]);
+	const [filteredProjects, setFilteredProjects] = React.useState<Project[]>(
+		[]
+	);
 	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
 	const [isLoading, setIsLoading] = React.useState(false);
 	const isMobile = useBreakpointValue({ base: true, lg: false });
@@ -29,6 +41,7 @@ const Projects: NextPage = () => {
 				}
 				const data = await res.json();
 				setProjects(data);
+				setFilteredProjects(data);
 				setIsLoading(false);
 			} catch (error) {
 				console.error(error);
@@ -41,12 +54,37 @@ const Projects: NextPage = () => {
 
 	if (requestError) return <ErrorAlert {...requestError} />;
 
+	const searchProjects = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const query = e.target.value;
+		if (query === '') {
+			setFilteredProjects(projects);
+		}
+		const filter = projects?.filter((project) => {
+			if (
+				project.description
+					.toLowerCase()
+					.includes(query.toLowerCase()) ||
+				project.name.toLowerCase().includes(query.toLowerCase())
+			) {
+				return project;
+			}
+		});
+		setFilteredProjects(filter);
+	};
+
 	return (
 		<Box>
 			<Box maxWidth={isMobile ? undefined : '900px'}>
 				<VStack align="stretch" spacing={5}>
+					<HStack>
+						<Input
+							onChange={searchProjects}
+							bgColor={colors.blue}
+							placeholder={'Search projects...'}
+						/>
+					</HStack>
 					{projects &&
-						projects.map((project) => (
+						filteredProjects?.map((project) => (
 							<ProjectCard key={project.id} project={project} />
 						))}
 				</VStack>
