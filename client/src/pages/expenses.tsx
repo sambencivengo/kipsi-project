@@ -2,7 +2,7 @@ import { Box, VStack, Spinner } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
 import { ErrorAlert, ErrorAlertProps } from '../components/ErrorAlert';
-import { ExpenseCard } from '../components/expenses';
+import { ExpenseCard } from '../components/ExpenseCard';
 import { devBaseApiUrl } from '../constants';
 import { Expense } from '../types';
 

@@ -6,12 +6,14 @@ import {
 	VStack,
 	Center,
 	Spinner,
+	Button,
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { ErrorAlert, ErrorAlertProps } from '../../components/ErrorAlert';
-import { ExpenseCard } from '../../components/expenses/ExpenseCard';
+import { ExpenseCard } from '../../components/ExpenseCard';
+import { ExpenseForm } from '../../components/ExpenseForm';
 import { devBaseApiUrl } from '../../constants';
 import { colors } from '../../theme';
 import { Expense, Project } from '../../types';
@@ -23,6 +25,7 @@ const ProjectId: NextPage = () => {
 	const [expenses, setExpenses] = React.useState<Expense[]>([]);
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
+	const [showExpenseForm, setShowExpenseForm] = React.useState(false);
 	const { query, isReady } = useRouter();
 	const { projectId } = query;
 
@@ -68,7 +71,7 @@ const ProjectId: NextPage = () => {
 			bgColor={colors.darkBlue}
 			maxW={isMobile ? undefined : '900px'}
 		>
-			<Box mb={10}>
+			<Box>
 				<Heading>{project?.name}</Heading>
 				<Text>{project?.description}</Text>
 				<Text as="b">
@@ -76,6 +79,16 @@ const ProjectId: NextPage = () => {
 					{project ? calculateTotalExpenseCost(project) : null}
 				</Text>
 			</Box>
+			{!showExpenseForm && (
+				<Center p={5}>
+					<Button onClick={() => setShowExpenseForm(true)}>
+						New Expense
+					</Button>
+				</Center>
+			)}
+			{showExpenseForm && (
+				<ExpenseForm setShowExpenseForm={setShowExpenseForm} />
+			)}
 			<VStack align="stretch" spacing={5}>
 				{expenses?.length ? (
 					expenses.map((expense) => (

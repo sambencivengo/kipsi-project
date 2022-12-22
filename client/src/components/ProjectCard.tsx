@@ -9,11 +9,11 @@ import {
 } from '@chakra-ui/react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import React from 'react';
-import { colors } from '../../theme';
+import { colors } from '../theme';
 import dayjs from 'dayjs';
-import { Project } from '../../types';
+import { Project } from '../types';
 import { useRouter } from 'next/router';
-import { calculateTotalExpenseCost } from '../../utils';
+import { calculateTotalExpenseCost } from '../utils';
 
 interface ProjectCardProps {
 	project: Project;

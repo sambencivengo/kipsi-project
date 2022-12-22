@@ -1,15 +1,7 @@
-import {
-	Box,
-	Button,
-	HStack,
-	Input,
-	Spinner,
-	useBreakpointValue,
-	VStack,
-} from '@chakra-ui/react';
+import { Input, Spinner, useBreakpointValue, VStack } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
-import { ProjectCard } from '../components/projects/ProjectCard';
+import { ProjectCard } from '../components/ProjectCard';
 import { devBaseApiUrl } from '../constants';
 import { ErrorAlert, ErrorAlertProps } from '../components/ErrorAlert';
 import { Project } from '../types';
