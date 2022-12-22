@@ -4,6 +4,7 @@ import {
 	Center,
 	Heading,
 	VStack,
+	Spinner,
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
@@ -14,11 +15,12 @@ import { Expense } from '../types';
 
 const Expenses: NextPage = () => {
 	const [expenses, setExpenses] = React.useState<Expense[] | null>(null);
-	const isMobile = useBreakpointValue({ base: true, lg: false });
+	const [isLoading, setIsLoading] = React.useState(false);
 	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
 
 	React.useEffect(() => {
 		const getExpenses = async () => {
+			setIsLoading(true);
 			try {
 				const res = await fetch(`${devBaseApiUrl}/api/expenses`);
 
@@ -28,17 +30,21 @@ const Expenses: NextPage = () => {
 						header: 'Error',
 						text: `Unable to get projects ${errCodeMsg}`,
 					});
+					setIsLoading(false);
 					return;
 				}
 
 				const data = await res.json();
 				setExpenses(data);
+				setIsLoading(false);
 			} catch (error) {
 				console.error(error);
 			}
 		};
 		getExpenses();
 	}, []);
+
+	if (isLoading) return <Spinner />;
 
 	if (requestError) return <ErrorAlert {...requestError} />;
 

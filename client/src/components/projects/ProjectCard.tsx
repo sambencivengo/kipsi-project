@@ -11,6 +11,7 @@ import {
 import { FiArrowUpRight } from 'react-icons/fi';
 import React from 'react';
 import { colors } from '../../theme';
+import dayjs from 'dayjs';
 import { Project } from '../../types';
 import { useRouter } from 'next/router';
 import { calculateTotalExpenseCost } from '../../utils';
@@ -40,9 +41,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 		>
 			<VStack w={'100%'} align={'left'}>
 				<Heading size="lg">{project.name}</Heading>
-				<HStack>
-					<Text maxW={'70%'}>{project.description}</Text>
-				</HStack>
+				<Text maxW={'70%'}>{project.description}</Text>
 			</VStack>
 			<Stack mr={2} dir="col" w="30%" textAlign={'right'}>
 				<Text as={'b'}>Total Cost:</Text>

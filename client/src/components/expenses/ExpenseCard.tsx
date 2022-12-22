@@ -1,4 +1,5 @@
 import { Text, Flex, Heading, Stack, VStack, Button } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
@@ -14,7 +15,9 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({
 	expense,
 	showProjectButton = false,
 }) => {
-	console.log(expense);
+	const expenseDate = dayjs(expense.createdAt)
+		.format('MM/DD/YYYY')
+		.toString();
 
 	const router = useRouter();
 	return (
@@ -31,6 +34,7 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({
 				<Heading size="lg">{expense.name}</Heading>
 				<Text>Qualifies for tax credit?</Text>
 				<Text>{expense.is_qualified ? 'Yes' : 'No'}</Text>
+				<Text>{expenseDate}</Text>
 			</VStack>
 			<Stack mr={2} dir="col" w="30%" textAlign={'right'}>
 				<Text as={'b'}>Cost:</Text>

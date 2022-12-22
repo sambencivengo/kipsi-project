@@ -5,6 +5,7 @@ import {
 	useBreakpointValue,
 	VStack,
 	Center,
+	Spinner,
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
@@ -20,6 +21,7 @@ const ProjectId: NextPage = () => {
 	const isMobile = useBreakpointValue({ base: true, lg: false });
 	const [project, setProject] = React.useState<Project | null>(null);
 	const [expenses, setExpenses] = React.useState<Expense[]>([]);
+	const [isLoading, setIsLoading] = React.useState(false);
 	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
 	const { query, isReady } = useRouter();
 	const { projectId } = query;
@@ -28,6 +30,7 @@ const ProjectId: NextPage = () => {
 		if (!isReady) return;
 
 		const getProject = async () => {
+			setIsLoading(true);
 			try {
 				const res = await fetch(
 					`${devBaseApiUrl}/api/projects/${projectId}`
@@ -38,19 +41,23 @@ const ProjectId: NextPage = () => {
 						header: 'Error',
 						text: `Unable to get projects ${errCodeMsg}`,
 					});
+					setIsLoading(false);
 					return;
 				}
 
 				const data = await res.json();
-
 				setProject(data);
 				setExpenses(data.expenses);
+
+				setIsLoading(false);
 			} catch (error) {
 				console.error(error);
 			}
 		};
 		getProject();
 	}, [isReady]);
+
+	if (isLoading) return <Spinner />;
 
 	if (requestError) return <ErrorAlert {...requestError} />;
 
