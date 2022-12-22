@@ -13,7 +13,7 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense }) => {
 			minH="150px"
 			minW={['auto', '300px', '500px']}
 			p={15}
-			bgColor={colors.darkBlue}
+			bgColor={colors.blue}
 			borderRadius={10}
 			dir="row"
 			justifyContent="space-between"

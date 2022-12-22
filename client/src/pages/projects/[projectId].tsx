@@ -61,11 +61,22 @@ const ProjectId: NextPage = () => {
 					{project ? calculateTotalExpenseCost(project) : null}
 				</Text>
 			</Box>
-			<VStack align="stretch" spacing={10}>
-				{expenses &&
+			<VStack align="stretch" spacing={5}>
+				{expenses?.length ? (
 					expenses.map((expense) => (
 						<ExpenseCard key={expense.id} expense={expense} />
-					))}
+					))
+				) : (
+					<Center>
+						<Heading
+							p={5}
+							borderRadius={10}
+							bgColor={colors.orange}
+						>
+							No expenses logged for this project
+						</Heading>
+					</Center>
+				)}
 			</VStack>
 		</Box>
 	);
