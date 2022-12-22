@@ -35,7 +35,7 @@ export const theme = extendTheme({
 	styles: {
 		global: {
 			body: {
-				bgColor: colors.blue,
+				bgColor: colors.lightBlue,
 			},
 			'::-webkit-scrollbar': { display: 'none' },
 		},
