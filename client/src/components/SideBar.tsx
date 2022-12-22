@@ -70,8 +70,8 @@ export const Sidebar = ({
 		<Box
 			position="fixed"
 			left={0}
+			pt="80px"
 			w="300px"
-			top={'80px'}
 			h="100%"
 			bgColor={sideBarColor}
 		>

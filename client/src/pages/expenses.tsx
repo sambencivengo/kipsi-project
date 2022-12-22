@@ -1,12 +1,12 @@
-import { Center, Heading } from '@chakra-ui/react';
+import { Heading, VStack } from '@chakra-ui/react';
 import { NextPage } from 'next';
-import { devBaseApiUrl } from '../constants';
+import { ExpensesContainer } from '../components/ExpensesContainer';
 
 const Expenses: NextPage = () => {
 	return (
-		<Center>
-			<Heading>Expenses 🧾</Heading>
-		</Center>
+		<VStack>
+			<ExpensesContainer />
+		</VStack>
 	);
 };
 
