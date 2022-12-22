@@ -1,9 +1,18 @@
-import { Text, Flex, Heading, VStack, HStack, Stack } from '@chakra-ui/react';
-
+import {
+	Text,
+	Flex,
+	Heading,
+	VStack,
+	HStack,
+	Stack,
+	Button,
+	Box,
+} from '@chakra-ui/react';
+import { FiArrowUpRight } from 'react-icons/fi';
 import React from 'react';
-
 import { colors } from '../../theme';
 import { Project } from '../../types';
+import { useRouter } from 'next/router';
 
 interface ProjectCardProps {
 	project: Project;
@@ -12,10 +21,10 @@ interface ProjectCardProps {
 export const ProjectCard: React.FC<ProjectCardProps> = ({
 	project,
 }: ProjectCardProps) => {
+	const router = useRouter();
 	const totalCost = project.expenses
 		.map(({ cost }) => Number(cost))
 		.reduce((sum, a) => sum + a, 0);
-	console.log(totalCost);
 
 	return (
 		<Flex
@@ -35,6 +44,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 			<Stack mr={2} dir="col" w="30%" textAlign={'right'}>
 				<Text as={'b'}>Total Cost:</Text>
 				<Text as={'b'}>${totalCost}</Text>
+				<Box>
+					<Button
+						onClick={() => router.push(`/projects/${project.id}`)}
+						rightIcon={<FiArrowUpRight />}
+					>
+						View
+					</Button>
+				</Box>
 			</Stack>
 		</Flex>
 	);
