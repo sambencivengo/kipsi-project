@@ -1,6 +1,5 @@
 import {
 	Text,
-	Flex,
 	Heading,
 	VStack,
 	HStack,
@@ -31,23 +30,24 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 		.reduce((sum, a) => sum + a, 0);
 
 	return (
-		<Flex
+		<HStack
 			minH="150px"
 			p={15}
+			minW="100%"
 			bgColor={colors.darkBlue}
 			borderRadius={10}
 			dir="row"
 			justifyContent="space-between"
 		>
-			<VStack w={'100%'} align={'left'}>
+			<VStack w="100%" align={'left'}>
 				<Heading size="lg">{project.name}</Heading>
-				<Text maxW={'70%'}>{project.description}</Text>
+				<Text>{project.description}</Text>
 			</VStack>
 			<Stack mr={2} dir="col" w="30%" textAlign={'right'}>
-				<Text as={'b'}>Total Cost:</Text>
-				<Text as={'b'}>${totalCost}</Text>
+				<Text as={'b'}>Total Cost: ${totalCost}</Text>
 				<Box>
 					<Button
+						size={'sm'}
 						onClick={() => router.push(`/projects/${project.id}`)}
 						rightIcon={<FiArrowUpRight />}
 					>
@@ -55,6 +55,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 					</Button>
 				</Box>
 			</Stack>
-		</Flex>
+		</HStack>
 	);
 };

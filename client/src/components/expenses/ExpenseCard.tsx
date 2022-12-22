@@ -1,8 +1,18 @@
-import { Text, Flex, Heading, Stack, VStack, Button } from '@chakra-ui/react';
+import {
+	Text,
+	Flex,
+	Heading,
+	Stack,
+	VStack,
+	Button,
+	HStack,
+} from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
+import { AiFillCheckCircle } from 'react-icons/ai';
+import { ImCross } from 'react-icons/im';
 import { colors } from '../../theme';
 import { Expense } from '../../types';
 
@@ -23,7 +33,7 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({
 	return (
 		<Flex
 			minH="150px"
-			minW={['auto', '300px', '500px']}
+			minW={['300px', '500px']}
 			p={15}
 			bgColor={colors.blue}
 			borderRadius={10}
@@ -32,8 +42,16 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({
 		>
 			<VStack w={'100%'} align={'left'}>
 				<Heading size="lg">{expense.name}</Heading>
-				<Text>Qualifies for tax credit?</Text>
-				<Text>{expense.is_qualified ? 'Yes' : 'No'}</Text>
+				<HStack>
+					<Text>Qualifies?</Text>
+					<Text>
+						{expense.is_qualified ? (
+							<AiFillCheckCircle color="green" size={'30px'} />
+						) : (
+							<ImCross color="red" size={'25px'} />
+						)}
+					</Text>
+				</HStack>
 				<Text>{expenseDate}</Text>
 			</VStack>
 			<Stack mr={2} dir="col" w="30%" textAlign={'right'}>
@@ -41,12 +59,13 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({
 				<Text as={'b'}>${expense.cost}</Text>
 				{showProjectButton && (
 					<Button
+						size={'sm'}
 						onClick={() =>
 							router.push(`/projects/${expense.project.id}`)
 						}
 						rightIcon={<FiArrowUpRight />}
 					>
-						View Project
+						View
 					</Button>
 				)}
 			</Stack>

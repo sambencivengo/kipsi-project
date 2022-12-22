@@ -1,11 +1,4 @@
-import {
-	useBreakpointValue,
-	Box,
-	Center,
-	Heading,
-	VStack,
-	Spinner,
-} from '@chakra-ui/react';
+import { Box, VStack, Spinner } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
 import { ErrorAlert, ErrorAlertProps } from '../components/ErrorAlert';

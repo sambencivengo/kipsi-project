@@ -13,7 +13,6 @@ import { InputField } from '../components/InputField';
 import { colors } from '../theme';
 import { CreateProjectSchema } from '../schema';
 import { devBaseApiUrl } from '../constants';
-import { resolveMx } from 'dns';
 import { ErrorAlert, ErrorAlertProps } from '../components/ErrorAlert';
 import React from 'react';
 
