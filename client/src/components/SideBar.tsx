@@ -59,7 +59,7 @@ export const Sidebar = ({
 			<DrawerOverlay>
 				<DrawerContent bgColor={sideBarColor}>
 					<DrawerCloseButton />
-					<DrawerHeader>Menu</DrawerHeader>
+					<DrawerHeader>Kipsi Project</DrawerHeader>
 					<DrawerBody>
 						<NavigationContent />
 					</DrawerBody>

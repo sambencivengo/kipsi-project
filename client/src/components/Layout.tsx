@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
 				isMobile={isMobile ?? false}
 				toggleSideBar={toggleSideBar}
 			/>
-			<Center>
+			<Center ml={isMobile ? undefined : '300px'}>
 				<main>{children}</main>
 			</Center>
 		</>

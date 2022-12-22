@@ -1,5 +1,4 @@
 import { DeepPartial, extendTheme, ThemeConfig, Theme } from '@chakra-ui/react';
-import { mode } from '@chakra-ui/theme-tools';
 
 // https://chakra-ui.com/docs/styled-system/color-mode
 const config: ThemeConfig = {
@@ -26,16 +25,12 @@ export const theme = extendTheme({
 		// },
 	},
 	styles: {
-		global: (props) => ({
+		global: {
 			body: {
-				color: mode(colors.blue, colors.darkBlue)(props),
-				backgroundColor: mode(colors.blue, colors.darkBlue)(props),
+				bg: colors.lightBlue,
 			},
 			'::-webkit-scrollbar': { display: 'none' },
-			'#hubspot-messages-iframe-container': {
-				colorScheme: 'auto',
-			},
-		}),
+		},
 	},
 	colors,
 } as DeepPartial<Theme>);

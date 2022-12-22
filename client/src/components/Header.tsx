@@ -8,8 +8,12 @@ interface HeaderProps {
 
 export const Header = ({ isMobile, toggleSideBar }: HeaderProps) => {
 	return (
-		<Flex bgColor={colors.darkBlue} justifyContent="space-between" h="80px">
-			<Box p={5}>
+		<Flex
+			bgColor={colors.darkBlue}
+			justifyContent={'space-between'}
+			h="80px"
+		>
+			<Box width={10} p={5}>
 				{isMobile && (
 					<IconButton
 						icon={<MdMenu />}
@@ -21,7 +25,7 @@ export const Header = ({ isMobile, toggleSideBar }: HeaderProps) => {
 			<Center>
 				<Heading>Kipsi Project</Heading>
 			</Center>
-			<Box />
+			<Box width={10} />
 		</Flex>
 	);
 };
