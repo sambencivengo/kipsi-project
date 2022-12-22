@@ -12,6 +12,9 @@ const start = async () => {
 			origin: ['http://localhost:3000'],
 		})
 	);
+
+	app.use(express.json());
+
 	app.use('/api', api);
 
 	app.get('/', (_, res) => {
