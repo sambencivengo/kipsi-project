@@ -13,6 +13,7 @@ import React from 'react';
 import { colors } from '../../theme';
 import { Project } from '../../types';
 import { useRouter } from 'next/router';
+import { calculateTotalExpenseCost } from '../../utils';
 
 interface ProjectCardProps {
 	project: Project;
@@ -22,7 +23,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 	project,
 }: ProjectCardProps) => {
 	const router = useRouter();
-	const totalCost = project.expenses
+	const totalCost = calculateTotalExpenseCost(project);
+
+	project.expenses
 		.map(({ cost }) => Number(cost))
 		.reduce((sum, a) => sum + a, 0);
 
