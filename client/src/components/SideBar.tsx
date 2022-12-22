@@ -46,6 +46,15 @@ export const Sidebar = ({
 			>
 				Expenses
 			</Button>
+			<Button
+				onClick={() => router.push('/create-project')}
+				size={'lg'}
+				borderRadius={0}
+				h={'50px'}
+				width="100%"
+			>
+				New Project
+			</Button>
 		</VStack>
 	);
 

@@ -28,8 +28,8 @@ const CreateProject: NextPage = () => {
 	if (requestError) return <ErrorAlert {...requestError} />;
 
 	return (
-		<Box p={10} borderRadius={10} bgColor={colors.darkBlue}>
-			<Heading>Create Project</Heading>
+		<Box w={'100%'} p={10} borderRadius={10} bgColor={colors.darkBlue}>
+			<Heading p={5}>Create Project</Heading>
 			<VStack>
 				<Formik
 					validateOnChange={false}
