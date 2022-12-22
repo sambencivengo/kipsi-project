@@ -9,6 +9,7 @@ import {
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { ErrorAlert, ErrorAlertProps } from '../../components/ErrorAlert';
 import { ExpenseCard } from '../../components/expenses/ExpenseCard';
 import { devBaseApiUrl } from '../../constants';
 import { colors } from '../../theme';
@@ -19,6 +20,7 @@ const ProjectId: NextPage = () => {
 	const isMobile = useBreakpointValue({ base: true, lg: false });
 	const [project, setProject] = React.useState<Project | null>(null);
 	const [expenses, setExpenses] = React.useState<Expense[]>([]);
+	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
 	const { query, isReady } = useRouter();
 	const { projectId } = query;
 
@@ -31,7 +33,11 @@ const ProjectId: NextPage = () => {
 					`${devBaseApiUrl}/api/projects/${projectId}`
 				);
 				if (!res.ok) {
-					console.log('Unable to get project');
+					const errCodeMsg = `(Error Code: ${res.status})`;
+					setRequestError({
+						header: 'Error',
+						text: `Unable to get projects ${errCodeMsg}`,
+					});
 					return;
 				}
 
@@ -45,6 +51,8 @@ const ProjectId: NextPage = () => {
 		};
 		getProject();
 	}, [isReady]);
+
+	if (requestError) return <ErrorAlert {...requestError} />;
 
 	return (
 		<Box

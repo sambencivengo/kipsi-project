@@ -1,1 +1,1 @@
-export * from './ProjectsContainer';
+export * from './ProjectCard';
