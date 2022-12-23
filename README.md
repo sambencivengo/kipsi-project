@@ -1,8 +1,5 @@
 # kipsi-project
 
-
-## Xiaolong
-
 I had a great time working on this project. I hope you enjoy checking it out!
 
 
