@@ -1,4 +1,4 @@
-import { Input, Spinner, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Input, Spinner, VStack } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
 import { ProjectCard } from '../components/ProjectCard';
@@ -14,7 +14,6 @@ const Projects: NextPage = () => {
 	);
 	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
 	const [isLoading, setIsLoading] = React.useState(false);
-	const isMobile = useBreakpointValue({ base: true, lg: false });
 
 	React.useEffect(() => {
 		setIsLoading(true);
@@ -67,7 +66,7 @@ const Projects: NextPage = () => {
 	return (
 		<VStack spacing={5}>
 			<Input
-				minW={'100%'}
+				w={['auto', '300px', '500px', '700px']}
 				onChange={searchProjects}
 				bgColor={colors.blue}
 				placeholder={'Search projects...'}
