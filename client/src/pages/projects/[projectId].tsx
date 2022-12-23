@@ -87,7 +87,12 @@ const ProjectId: NextPage = () => {
 				</Center>
 			)}
 			{showExpenseForm && (
-				<ExpenseForm setShowExpenseForm={setShowExpenseForm} />
+				<ExpenseForm
+					expenses={expenses}
+					setExpenses={setExpenses}
+					projectId={project?.id}
+					setShowExpenseForm={setShowExpenseForm}
+				/>
 			)}
 			<VStack align="stretch" spacing={5}>
 				{expenses?.length ? (
@@ -98,8 +103,10 @@ const ProjectId: NextPage = () => {
 					<Center>
 						<Heading
 							p={5}
+							size="lg"
+							textAlign="center"
 							borderRadius={10}
-							bgColor={colors.orange}
+							bgColor={colors.blue}
 						>
 							No expenses logged for this project
 						</Heading>

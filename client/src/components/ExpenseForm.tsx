@@ -6,23 +6,29 @@ import {
 	Heading,
 	Flex,
 	Button,
-	HStack,
 	Center,
 } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import React from 'react';
 import { devBaseApiUrl } from '../constants';
-import { CreateExpenseSchema, CreateProjectSchema } from '../schema';
+import { CreateExpenseSchema } from '../schema';
 import { colors } from '../theme';
+import { Expense } from '../types/expense';
 import { ErrorAlertProps, ErrorAlert } from './ErrorAlert';
 import { InputField } from './InputField';
 
 interface ExpenseFormProps {
 	setShowExpenseForm: React.Dispatch<React.SetStateAction<boolean>>;
+	projectId: number | undefined;
+	setExpenses: React.Dispatch<React.SetStateAction<Expense[]>>;
+	expenses: Expense[];
 }
 
 export const ExpenseForm: React.FC<ExpenseFormProps> = ({
 	setShowExpenseForm,
+	setExpenses,
+	projectId,
+	expenses,
 }) => {
 	const [requestError, setRequestError] = React.useState<ErrorAlertProps>();
 	const [isLoading, setIsLoading] = React.useState(false);
@@ -59,7 +65,7 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
 						setIsLoading(true);
 
 						const res = await fetch(
-							`${devBaseApiUrl}/api/projects`,
+							`${devBaseApiUrl}/api/expenses?projectId=${projectId}`,
 							{
 								method: 'POST',
 								headers: {
@@ -69,7 +75,9 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
 							}
 						);
 
-						await res.json();
+						const data = await res.json();
+
+						setExpenses([...expenses, data]);
 						setIsLoading(false);
 
 						toast({
