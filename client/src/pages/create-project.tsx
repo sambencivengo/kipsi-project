@@ -57,6 +57,17 @@ const CreateProject: NextPage = () => {
 							}
 						);
 
+						if (!res.ok) {
+							const errCodeMsg = `(Error Code: ${res.status})`;
+							setRequestError({
+								header: 'Error',
+								text: `Unable to get projects ${errCodeMsg}`,
+							});
+							setIsLoading(false);
+
+							return;
+						}
+
 						await res.json();
 						setIsLoading(false);
 
@@ -69,17 +80,6 @@ const CreateProject: NextPage = () => {
 							containerStyle: { background: colors.orange },
 							position: 'top',
 						});
-
-						if (!res.ok) {
-							const errCodeMsg = `(Error Code: ${res.status})`;
-							setRequestError({
-								header: 'Error',
-								text: `Unable to get projects ${errCodeMsg}`,
-							});
-							setIsLoading(false);
-
-							return;
-						}
 					}}
 				>
 					{({ isSubmitting }) => (
