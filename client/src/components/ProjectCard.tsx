@@ -33,7 +33,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 		<HStack
 			minH="150px"
 			p={15}
-			minW="100%"
+			w={['auto', '300px', '500px', '700px']}
 			bgColor={colors.darkBlue}
 			borderRadius={10}
 			dir="row"

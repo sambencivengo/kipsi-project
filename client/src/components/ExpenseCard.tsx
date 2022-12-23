@@ -33,7 +33,7 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({
 	return (
 		<Flex
 			minH="150px"
-			minW={['300px', '500px']}
+			w={['auto', '300px', '500px', '700px']}
 			p={15}
 			bgColor={colors.blue}
 			borderRadius={10}
