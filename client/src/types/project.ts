@@ -5,5 +5,5 @@ export interface Project {
 	name: string;
 	createdAt: Date;
 	description: string;
-	expenses: Expense[];
+	expenses?: Expense[];
 }
