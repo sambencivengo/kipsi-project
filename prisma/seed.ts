@@ -67,7 +67,7 @@ async function main() {
 		data: {
 			name: 'Rocket Bicycle',
 			description:
-				'Say goodbye to ebikes! Say hello to the the rocket bike. Capable of achieving mach speeds!',
+				'Say goodbye to ebikes! Say hello to the rocket bike. Capable of achieving mach speeds!',
 			expenses: {
 				create: [
 					{
